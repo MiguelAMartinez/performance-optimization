@@ -1,4 +1,4 @@
-## Arcade Game 
+## Performance Optimization 
 This game was built on Udacity's [template code](https://github.com/udacity/frontend-nanodegree-mobile-portfolio). 
 
 ## To view the website
