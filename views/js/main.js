@@ -446,13 +446,16 @@ var resizePizzas = function(size) {
 
     return dx;
   }
+  
+  // Use getElementsByClassName instead of querySelectorAll and move it out of updatePositions()
+  var PizzaContainerItems = document.getElementsByClassName("randomPizzaContainer");
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    for (var i = 0; i < PizzaContainerItems.length; i++) {
+      var dx = determineDx(PizzaContainerItems[i], size);
+      var newwidth = (PizzaContainerItems[i].offsetWidth + dx) + 'px';
+      PizzaContainerItems[i].style.width = newwidth;
     }
   }
 
@@ -496,8 +499,8 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
-  // Use getElementsByClassName instead of querySelectorAll and move it out of updatePositions()
-  var items = document.getElementsByClassName('mover');
+// Use getElementsByClassName instead of querySelectorAll and move it out of updatePositions()
+var items = document.getElementsByClassName('mover');
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
