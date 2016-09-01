@@ -501,7 +501,8 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  // Use getElementsByClassName instead of querySelectorAll
+  var items = document.getElementsByClassName('mover');
 
   // This constant was taken out of the for loop, since it stays constant 
   var bodyScrollTop = document.body.scrollTop / 1250;
