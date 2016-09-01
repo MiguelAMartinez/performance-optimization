@@ -1,17 +1,11 @@
 /*
-Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
-jank-free at 60 frames per second.
+The goal of this project is to optimize the performance of this website. This
+main.js file was modified in order to achieve a consistent frame-rate of 60fps 
+when scrolling on the views/pizza.html page.
 
-There are two major issues in this code that lead to sub-60fps performance. Can
-you spot and fix both?
+The pizza animations work best when used in Google Chrome.
 
-
-Built into the code, you'll find a few instances of the User Timing API
-(window.performance), which will be console.log()ing frame rate data into the
-browser console. To learn more about User Timing API, check out:
-http://www.html5rocks.com/en/tutorials/webperformance/usertiming/
-
-Creator:
+Website Creator:
 Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
@@ -403,16 +397,17 @@ var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
   // Changes the value for the size of the pizza above the slider
+  // Use getElementById instead of querySelector
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -446,7 +441,7 @@ var resizePizzas = function(size) {
 
     return dx;
   }
-  
+
   // Use getElementsByClassName instead of querySelectorAll and move it out of updatePositions()
   var PizzaContainerItems = document.getElementsByClassName("randomPizzaContainer");
 
