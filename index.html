@@ -9,7 +9,6 @@
 
     <!-- CSS media queries -->
     <link href="css/print.css" rel="stylesheet" media="print">
-    <link href="css/style_phone.css" rel="stylesheet" media="(max-width: 480px)">
 
     <!-- Inline CSS -->
     <!-- Main index CSS used to be at <link href="css/style.css" rel="stylesheet"> -->   
@@ -57,6 +56,11 @@
         border-top: 1px solid #ccc;
       }
       footer span { float: right; font-style: italic; }
+
+      @media only screen and (max-width: 480px) {
+        body { font-size: 12px;}
+        header p { padding-left: 4.5em;}
+      }
     </style>
     
     <!-- Async loading of google -->
