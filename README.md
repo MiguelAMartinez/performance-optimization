@@ -13,6 +13,7 @@ The optimizations made include:
 - Reduce image size and optimize image (133) -->
 
 Result:
+
 ![Alt text](/img/PSAfter.png?raw=true "Optional Title")
 
 
@@ -28,7 +29,8 @@ The optimizations made include:
 - Move bodyScrollTop variable out of the function for loop (514)
 
 Result:
+
 ![Alt text](/img/FPSAfter.png?raw=true "Optional Title")
 
-## To view the website
-Open the website [here](https://miguelamartinez.github.io/performance-optimization/). 
+## To view the optimized website
+Open the optimized website [here](https://miguelamartinez.github.io/performance-optimization/). 
