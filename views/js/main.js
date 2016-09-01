@@ -3,6 +3,14 @@ The goal of this project is to optimize the performance of this website. This
 main.js file was modified in order to achieve a consistent frame-rate of 60fps 
 when scrolling on the views/pizza.html page.
 
+The optimizations made include: 
+- Replace querySelector with getElementById (412 - 418)
+- Replace querySelectorAll with getElementsByClassName and 
+  move variable out of for loop in changePizzaSizes() (454)
+- Replace querySelectorAll with getElementsByClassName and 
+  move variable out of updatePositions() (506)
+- Move bodyScrollTop variable out of the function for loop (514)
+
 The pizza animations work best when used in Google Chrome.
 
 Website Creator:
@@ -442,7 +450,7 @@ var resizePizzas = function(size) {
     return dx;
   }
 
-  // Use getElementsByClassName instead of querySelectorAll and move it out of updatePositions()
+  // Use getElementsByClassName instead of querySelectorAll and move it out of changePizzaSizes()
   var PizzaContainerItems = document.getElementsByClassName("randomPizzaContainer");
 
   // Iterates through pizza elements on the page and changes their widths
@@ -502,7 +510,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // This constant was taken out of the for loop, since it stays constant 
+  // This variable was taken out of the for loop, since it stays constant 
   var bodyScrollTop = document.body.scrollTop / 1250;
   
   for (var i = 0; i < items.length; i++) {
