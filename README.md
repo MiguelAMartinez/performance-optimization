@@ -10,7 +10,7 @@ The optimizations made include:
 - Inline key CSS (26 - 75)
 - Make loading of Google fonts async (78 - 85)
 - Make JS Google Analytics async (88 - 97)
-- Reduce image size and optimize image (133) -->
+- Reduce image size and optimize image (133) 
 
 Result:
 
