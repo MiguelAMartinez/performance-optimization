@@ -12,13 +12,18 @@ The optimizations made include:
 - Make JS Google Analytics async (88 - 97)
 - Reduce image size and optimize image (133) 
 
-Result:
+Before optimization: 
+
+![Alt text](/img/PSBefore.png?raw=true "Optional Title")
+
+After optimization: 
 
 ![Alt text](/img/PSAfter.png?raw=true "Optional Title")
 
-
 The `views/js/main.js` file was modified in order to achieve a consistent frame-rate
-of 60fps when scrolling on the views/pizza.html page.
+of 60fps when scrolling on the views/pizza.html page, and to achieve a time of pizza
+resize (when we move the slider to change pizza sizes, it is shown in the the console)
+of less than 5 ms.
 
 The optimizations made include: 
 - Replace querySelector with getElementById in changeSliderLabel()(419 - 425)
@@ -38,9 +43,17 @@ The optimizations made include:
 - Reduce limit of for loop, define elem variable at start of loop in 
   in updatePositions() (557)
 
-Result:
+Before optimization: 
+
+![Alt text](/img/FPSBefore.png?raw=true "Optional Title")
+
+![Alt text](/img/resizeBefore.png?raw=true "Optional Title")
+
+After optimization: 
 
 ![Alt text](/img/FPSAfter.png?raw=true "Optional Title")
+
+![Alt text](/img/resizeAfter.png?raw=true "Optional Title")
 
 ## To view the optimized website
 Open the optimized website [here](https://miguelamartinez.github.io/performance-optimization/). 
