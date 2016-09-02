@@ -22,7 +22,7 @@ After optimization:
 
 The `views/js/main.js` file was modified in order to achieve a consistent frame-rate
 of 60fps when scrolling on the views/pizza.html page, and to achieve a time of pizza
-resize (when we move the slider to change pizza sizes, it is shown in the the console)
+resize (when we move the slider to change pizza sizes, it is shown in the console)
 of less than 5 ms.
 
 The optimizations made include: 
