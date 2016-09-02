@@ -21,12 +21,22 @@ The `views/js/main.js` file was modified in order to achieve a consistent frame-
 of 60fps when scrolling on the views/pizza.html page.
 
 The optimizations made include: 
-- Replace querySelector with getElementById (412 - 418)
-- Replace querySelectorAll with getElementsByClassName and 
-  move variable out of for loop in changePizzaSizes() (454)
-- Replace querySelectorAll with getElementsByClassName and 
-  move variable out of updatePositions() (506)
-- Move bodyScrollTop variable out of the function for loop (514)
+- Replace querySelector with getElementById in changeSliderLabel()(419 - 425)
+- Replace querySelector with getElementById in determineDx() (438)
+- Replace querySelectorAll with getElementsByClassName and move variable 
+  PizzaContainerItems out of for loop in changePizzaSizes() (462)
+- Place variables dx and newwidth out of for loop in changePizzaSizes() 
+  (468 - 469)
+- Save array length to local variable in changePizzaSizes() (472)
+- Place variable pizzasDiv out of for loop (489)
+- Replace querySelectorAll with getElementsByClassName and move items 
+  variable out of updatePositions() (520)
+- Move bodyScrollTop variable out of the updatePositions() for loop (528)
+- Save array length to local variable in updatePositions() for loop (531)
+- Move variable movingPizzas out of for loop and Replace querySelector with
+  getElementById in updatePositions() (554)
+- Reduce limit of for loop, define elem variable at start of loop in 
+  in updatePositions() (557)
 
 Result:
 

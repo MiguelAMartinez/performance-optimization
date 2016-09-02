@@ -4,21 +4,28 @@ main.js file was modified in order to achieve a consistent frame-rate of 60fps
 when scrolling on the views/pizza.html page.
 
 The optimizations made include: 
-- Replace querySelector with getElementById (412 - 418)
-- Replace querySelectorAll with getElementsByClassName and 
-  move variable out of for loop in changePizzaSizes() (454)
-- Replace querySelectorAll with getElementsByClassName and 
-  move variable out of updatePositions() (506)
-- Move bodyScrollTop variable out of the function for loop (514)
+- Replace querySelector with getElementById in changeSliderLabel()(419 - 425)
+- Replace querySelector with getElementById in determineDx() (438)
+- Replace querySelectorAll with getElementsByClassName and move variable 
+  PizzaContainerItems out of for loop in changePizzaSizes() (462)
+- Place variables dx and newwidth out of for loop in changePizzaSizes() 
+  (468 - 469)
+- Save array length to local variable in changePizzaSizes() (472)
+- Place variable pizzasDiv out of for loop (489)
+- Replace querySelectorAll with getElementsByClassName and move items 
+  variable out of updatePositions() (520)
+- Move bodyScrollTop variable out of the updatePositions() for loop (528)
+- Save array length to local variable in updatePositions() for loop (531)
+- Move variable movingPizzas out of for loop and Replace querySelector with
+  getElementById in updatePositions() (554)
+- Reduce limit of for loop, define elem variable at start of loop in 
+  in updatePositions() (557)
 
 The pizza animations work best when used in Google Chrome.
 
-Website Creator:
-Cameron Pittman, Udacity Course Developer
-cameron *at* udacity *dot* com
+Website Creator: Cameron Pittman, Udacity Course Developer
 */
 
-// As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
@@ -427,7 +434,8 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+    // Use getElementById instead of querySelector
+    var windowWidth = document.getElementById("randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
     // Changes the slider value to a percent width
@@ -455,9 +463,13 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < PizzaContainerItems.length; i++) {
-      var dx = determineDx(PizzaContainerItems[i], size);
-      var newwidth = (PizzaContainerItems[i].offsetWidth + dx) + 'px';
+
+    // Place variables dx and newwidth out of for loop since they stay constant 
+    var dx = determineDx(PizzaContainerItems[0], size);
+    var newwidth = (PizzaContainerItems[0].offsetWidth + dx) + 'px';
+
+    // Save array length to local variable
+    for (var i = 0, len = PizzaContainerItems.length; i < len; i++) {
       PizzaContainerItems[i].style.width = newwidth;
     }
   }
@@ -473,9 +485,11 @@ var resizePizzas = function(size) {
 
 window.performance.mark("mark_start_generating"); // collect timing data
 
+// Place variable pizzasDiv out of for loop
+var pizzasDiv = document.getElementById("randomPizzas");
+
 // This for-loop actually creates and appends all of the pizzas when the page loads
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -513,9 +527,10 @@ function updatePositions() {
   // This variable was taken out of the for loop, since it stays constant 
   var bodyScrollTop = document.body.scrollTop / 1250;
   
-  for (var i = 0; i < items.length; i++) {
+  // Save array length to local variable
+  for (var i = 0, len = items.length; i < len; i++) {
     items[i].style.left = items[i].basicLeft + 100 * Math.sin(bodyScrollTop + (i % 5)) + 'px';
-  }
+  } 
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -534,15 +549,20 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+
+  // Move variable movingPizzas out of for loop and use getElementById
+  var movingPizzas = document.getElementById("movingPizzas1");  
+
+  // Reduce limit of for loop, define elem variable at start of loop
+  for (var i = 0, elem; i < 24; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
