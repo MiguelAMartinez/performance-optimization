@@ -26,7 +26,7 @@ resize (when we move the slider to change pizza sizes, it is shown in the consol
 of less than 5 ms.
 
 The optimizations made include: 
-- Replace querySelector with getElementById in changeSliderLabel()(419 - 425)
+- Replace querySelector with getElementById in changeSliderLabel() (419 - 425)
 - Replace querySelector with getElementById in determineDx() (438)
 - Replace querySelectorAll with getElementsByClassName and move variable 
   PizzaContainerItems out of for loop in changePizzaSizes() (462)
