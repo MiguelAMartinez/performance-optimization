@@ -41,7 +41,7 @@ The optimizations made include:
 - Move variable movingPizzas out of for loop and Replace querySelector with
   getElementById in updatePositions() (554)
 - Reduce limit of for loop, define elem variable at start of loop in 
-  in updatePositions() (557)
+  updatePositions() (557)
 
 Before optimization: 
 
