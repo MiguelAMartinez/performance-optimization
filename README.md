@@ -55,5 +55,5 @@ After optimization:
 
 ![Alt text](/img/resizeAfter.png?raw=true "Optional Title")
 
-## To view the optimized website
-Open the optimized website [here](https://miguelamartinez.github.io/performance-optimization/). 
+## View the optimized website
+Open the optimized website [here](https://miguelamartinez.github.io/performance-optimization/). (The `views/pizza.html` file works best with Google Chrome).
